@@ -1,0 +1,73 @@
+###This is basic configuration
+general:
+        max_len         :       256               # max length for the dataset
+ccmpred:
+        suffix          :       ccmpred 
+        length          :       1                         
+        parser_name     :       ccmpred_parser_2d                                                                
+        type            :       2d                                                                                 
+        skip            :       False                                                                             
+
+# secondary structure
+ss2:
+        suffix          :       ss2
+        length          :       3
+        parser_name     :       ss2_parser_1d
+        type            :       1d
+        skip            :       False
+
+# whether is on surface
+solv:
+        suffix          :       solv
+        length          :       1
+        parser_name     :       solv_parser_1d
+        type            :       1d
+        skip            :       False
+
+# colstats
+colstats:
+        suffix          :       colstats
+        length          :       22 
+        parser_name     :       colstats_parser_1d
+        type            :       1d
+        skip            :       False
+
+#pairwise conatct features
+pairstats:
+        suffix          :       pairstats
+        length          :       3
+        parser_name     :       pairstats_parser_2d
+        type            :       2d
+        skip            :       False
+
+# EVFold output
+evfold:
+        suffix          :       evfold
+        length          :       1
+        parser_name     :       evfold_parser_2d
+        type            :       2d
+        skip            :       False
+
+# NEFF Count
+neff:
+        suffix          :       hhmake
+        length          :       1
+        parser_name     :       neff_parser_1d
+        type            :       1d
+        skip            :       False
+
+# STD-DEV of CCMPRED output
+ccmpred_std:
+        suffix          :       ccmpred
+        length          :       1
+        parser_name     :       ccmpred_std_parser_1d
+        type            :       1d
+        skip            :       False
+
+# STD_DEV of EVfold output
+evfold_std:
+        suffix          :       evfold
+        length          :       1
+        parser_name     :       evfold_std_parser_1d
+        type            :       1d
+        skip            :       False

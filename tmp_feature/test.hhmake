@@ -1,0 +1,7 @@
+./tmp_feature/test.a3m is in A2M, A3M or FASTA format
+Read ./tmp_feature/test.a3m with 1652 sequences
+Alignment in ./tmp_feature/test.a3m contains 95 match states
+141 out of 1652 sequences passed filter (up to 30% position-dependent max pairwise sequence identity)
+Effective number of sequences exp(entropy) = 9.3 
+Writing HMM to ./tmp_feature/test.hhm
+Done

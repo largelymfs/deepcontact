@@ -1,0 +1,96 @@
+gen_feature_with_jackhmmer: No # if Yes, jackhmmer_result will be used to generate feature
+
+path:
+        output_base: /data/work/qing/DeepContact/test
+
+# run hhblits and reformat output to aln file
+# see hhblits_runner.py
+hhblits:
+        command: hhblits
+        uniprot_db: /data/work/yang/Qing/databases/data/uniprot20_2016_02/uniprot20_2016_02
+        n_threads: 20
+        n_iters: 3
+        e_value: 0.001
+        maxfilt: 500000
+        diff: inf
+        id: 99
+        cov: 50
+
+# run jackhmmer
+# see jackhmmer_runner.py
+jackhmmer:
+        command: /data/work/yang/Qing/software/hmmer-3.1b2/bin/jackhmmer
+        uniref_db: /data/work/yang/Qing/databases/data/new_uniref/uniref100.fasta
+        n_threads: 20
+        inc_E: 10.0
+        n_iter: 3
+
+# run hhfilter after jackhmmer
+# see jackhmmer_runner.py
+hhfilter:
+        command: hhfilter
+
+# run ccmpred
+# see ccmpred_runner.py
+ccmpred:
+        command: /data/work/yang/Qing/software/CCMpred/bin/ccmpred
+        n_threads: 0
+        # optional:
+        cuda_dev: 6   # (do not include if use default cuda device)
+
+# run freecontact in evfold mode
+# see freecontact_runner.py
+freecontact:
+        command: freecontact
+        n_threads: 20
+
+# run alnstats
+# see alnstats_runner.py
+alnstats:
+        command: /data/work/yang/Qing/software/metapsicov/bin/alnstats
+        n_processes: 20
+
+# run blastpgp
+# see ss_runner.py
+blast:
+        command: /data/work/yang/Qing/software/blast-2.2.26/bin/blastpgp
+        n_processes: 4
+        n_threads: 6
+        n_iters: 3
+        e_value: 0.001
+        database: nr
+
+# run makemat
+# see ss_runner.py
+makemat:
+        command: /data/work/yang/Qing/software/blast-2.2.26/bin/makemat
+        n_processes: 24
+        
+# run psipred
+# see ss_runner.py
+psipred:
+        command: /data/work/yang/Qing/software/psipred/bin/psipred
+        data: /data/work/yang/Qing/software/psipred/data
+        n_processes: 24
+
+# run psipred_pass2
+# see ss_runner.py
+psipred_pass2:
+        command: /data/work/yang/Qing/software/psipred/bin/psipass2
+        n_processes: 24
+        n_iters: 1
+        DCA: 1.0
+        DCB: 1.0
+
+# run solvpred
+# see ss_runner.py
+solvpred:
+        command: /data/work/yang/Qing/software/metapsicov/bin/solvpred
+        data: /data/work/yang/Qing/software/metapsicov/data/weights_solv.dat
+        n_processes: 24
+
+# run hhmake (includes neff)
+# see hhmake_runner
+hhmake:
+        command: hhmake
+        n_processes: 20
