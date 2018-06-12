@@ -1,0 +1,9 @@
+###This is basic configuration
+general:
+        max_len         :       256               # max length for the dataset
+ccmpred:
+        suffix          :       ccmpred 
+        length          :       1                         
+        parser_name     :       ccmpred_parser_2d                                                                
+        type            :       2d                                                                                 
+        skip            :       False                                                                             

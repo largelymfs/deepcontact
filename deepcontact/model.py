@@ -3,7 +3,7 @@
 #     File Name           :     model.py
 #     Created By          :     yang
 #     Creation Date       :     [2017-11-15 12:50]
-#     Last Modified       :     [2017-11-15 20:38]
+#     Last Modified       :     [2018-06-12 08:50]
 #     Description         :      
 #################################################################################
 
@@ -104,4 +104,23 @@ class Model:
         network = Feature2dBiasLayer(network)
         network = make_neural_network(network, [30, 1])[-1]
         return network
+
+class ModelCCMPRED:
+
+    def __init__(self, max_len, feature2d_len, **kwargs):
+        self.max_len = max_len
+        self.feature2d_len = feature2d_len
+    
+    def build_model(self, feature2d):
+        max_len = self.max_len
+
+        ###input###
+        input_feature2d = lasagne.layers.InputLayer(shape = (None, self.feature2d_len, max_len, max_len), input_var = feature2d)
+        network_input = input_feature2d
+        network = stack_conv2D_layer(network_input, [5] * 9,[32]*9) 
+        network = lasagne.layers.ConcatLayer([network_input, network[2], network[5], network[8]],axis = 1)
+        network = Feature2dBiasLayer(network)
+        network = make_neural_network(network, [30, 1])[-1]
+        return network
+
 

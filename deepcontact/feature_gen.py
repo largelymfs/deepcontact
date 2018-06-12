@@ -3,7 +3,7 @@
 #     File Name           :     feature_gen.py
 #     Created By          :     yang
 #     Creation Date       :     [2017-11-15 16:59]
-#     Last Modified       :     [2017-11-16 02:11]
+#     Last Modified       :     [2018-06-12 08:58]
 #     Description         :      
 #################################################################################
 import yaml, h5py, os, sys
@@ -99,6 +99,8 @@ if __name__=="__main__":
     
     combine_feature_list_2d = ['ccmpred', 'pairstats', 'evfold']
     combine_feature_list_1d = ['neff', 'ss2', 'solv', 'colstats', 'evfold_std', 'ccmpred_std']
+    combine_feature_list_2d = [x for x in combine_feature_list_2d if x in feature_map]
+    combine_feature_list_1d = [x for x in combine_feature_list_1d if x in feature_map]
     
     total_feature_length = 0
     for feature_name_2d in combine_feature_list_2d:
